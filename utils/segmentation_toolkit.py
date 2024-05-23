@@ -182,7 +182,27 @@ class Mask():
             for _ in range(iterations):
                 # Perform a dilation operation
                 dilated = cv2.dilate(self.mask.astype(np.uint8), kernel, iterations=1)
-                self.mask = dilated        
+                self.mask = dilated  
+
+        elif method == 'binary_erosion':
+            # Creating a kernel
+            if shape == '+':
+
+                def create_plus_matrix(size):
+                    matrix = np.zeros((size, size))
+                    matrix[size // 2, :] = 1
+                    matrix[:, size // 2] = 1
+                    return matrix
+                
+                kernel = create_plus_matrix(kernel_size).astype(np.uint8)
+            else:
+                kernel = np.ones((kernel_size, kernel_size), np.uint8)
+            
+            # Applying morphological operations
+            for _ in range(iterations):
+                # Perform a dilation operation
+                eroded = cv2.erode(self.mask.astype(np.uint8), kernel, iterations=1)
+                self.mask = eroded      
 
         elif method == 'fill_holes':
             # Fill holes in the mask

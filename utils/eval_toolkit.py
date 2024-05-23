@@ -38,9 +38,28 @@ def delete_outsideFOV(gts, newpts):
                 
     return gts, newpts
 
+def delete_outside_mask(error, mask):
+    # print(f"the shape of error is {np.shape(error)}")
+    # print(f"the shape of mask is {np.shape(mask)}")
+    for i in range(np.shape(error)[0]):
+        for j in range(np.shape(error)[1]):
+            if mask[i,j] != 1:
+                error[i,j,0] = 0
+                error[i,j,1] = 0
+
+    return error
+
 def calc_magnitude_1D(vectors, components):    
     x_component = vectors[:, components[0]]
     y_component = vectors[:, components[1]]
+    
+    # Calculate magnitude using vectorized operations
+    magnitude = np.sqrt(x_component**2 + y_component**2)
+    return magnitude
+
+def calc_magnitude_2D(vectors, components):    
+    x_component = vectors[:,:, components[0]]
+    y_component = vectors[:,:, components[1]]
     
     # Calculate magnitude using vectorized operations
     magnitude = np.sqrt(x_component**2 + y_component**2)
@@ -58,6 +77,13 @@ def calc_pts_error(newpts, gts):
     
     return mag_error, sd_error, mean_error
 
+def calc_df_error(error):
+    mag_error = (calc_magnitude_2D(error, [0, 1])).flatten()
+    mag_error = mag_error[mag_error != 0]                 # remove zero values
+    sd_error = np.std(mag_error)                         # standard deviation of the magnitude error
+    mean_error = np.mean(mag_error)
+
+    return mag_error, sd_error, mean_error
 
 
 

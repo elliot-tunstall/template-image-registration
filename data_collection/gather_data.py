@@ -3,7 +3,8 @@ import os
 import time
 from registration_propagation import run
 
-frames = list(range(2, 21)) + list(range(35, 61))
+# frames = list(range(2, 21)) + list(range(35, 61))
+# frames = range(2, 24)
 
 # Create an empty DataFrame with columns for metrics and settings
 columns = ['Frame', 'Dataset', 'Algorithm', 'Parameters', 'Time', 'DICE', 'HD', 'BCE', 'SSD', 'pSSD', 'MSE', 'pMSE', 'MI', 'pMI', 'SSIM', 'pSSIM', 'NCC', 'pNCC', 'JE', 'pJE', 'Mag Error', 'Mean Error', 'SD Error']
@@ -11,13 +12,29 @@ results_df = pd.DataFrame()
 
 algorithms = ['dipy', 'dipy_custom']
 parameters = 'Alpha-0_Beta-1'
-dataset = 'Cardiac'
+dataset = 'soft'
 batch = 'Complete'
+fixed_frame = 1
+dataset_number = 10
+
+if dataset == 'soft':
+    frames = range(1, 24)
+    fixed_frame = 0
+
+elif batch == 'complete':
+    frames = list(range(2, 21)) + list(range(35, 61))
+
+elif batch == 'diastole':
+    frames = range(2, 21)
+
+elif batch == 'systole':
+    frames = range(36, 55)
+    fixed_frame = 35
 
 # Process each image and append results to the DataFrame
 for f_indx, frame in enumerate(frames):
     start_time = time.time()
-    errors, mag_error1, sd_error1, mean_error1, errors_custom, mag_error2, sd_error2, mean_error2, execution_time1, execution_time2, dice, hd, bce = run(frame)
+    errors, mag_error1, sd_error1, mean_error1, errors_custom, mag_error2, sd_error2, mean_error2, execution_time1, execution_time2, dice, hd, bce = run(frame, dataset, fixed_frame=fixed_frame, dataset_number=dataset_number)
     row = {
         'Frame': frame,
         'Dataset': dataset,
@@ -78,10 +95,21 @@ for f_indx, frame in enumerate(frames):
 
     end_time = time.time()
     print(f"Frame {frame} processed in {end_time - start_time} seconds")
-    print(f"{f_indx/len(frames)*100}% complete")
+    print(f"{(f_indx+1)/len(frames)*100}% complete")
 
-# Save the DataFrame to a CSV file
-csv_file_path = f'/Users/elliottunstall/Desktop/Imperial/FYP/Results/{dataset}/{batch}/{parameters}.csv'
+if dataset == 'cardiac':
+    path = f'/Users/elliottunstall/Desktop/Imperial/FYP/Results/{dataset}/{batch}'
+
+elif dataset == 'soft':
+    path = f'/Users/elliottunstall/Desktop/Imperial/FYP/Results/{dataset}/{dataset_number}'
+
+# Check if the directory exists
+if not os.path.exists(path):
+    # If the directory doesn't exist, create it
+    os.makedirs(path)
+
+ # Save the DataFrame to a CSV file
+csv_file_path = f'{path}/{parameters}.csv'
 results_df.to_csv(csv_file_path, index=False)
 
 print(f"Results saved to {csv_file_path}")

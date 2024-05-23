@@ -9,11 +9,11 @@ def show_image(img, pixelMap):
     plt.imshow(img, extent=(pixelMap['X'][0][0].min(), pixelMap['X'][0][0].max(), pixelMap['Z'][0][0].max(), pixelMap['Z'][0][0].min()), origin='upper', cmap = 'grey')
     plt.colorbar()
 
-def load_inputs(frame):
+def load_inputs(frame, fixed_frame):
 	# I wrote this in a txt file so you may have to change the indents
 	dirname = os.path.dirname(__file__)
 	path = os.path.join('/Users/elliottunstall/Desktop/Imperial/FYP/', 'Example_cardiac_dataset')   # <- CHANGE PATH HERE
-	data0 = loadmat(os.path.join(path, 'bmode_f1.mat'))
+	data0 = loadmat(os.path.join(path, 'bmode_f'+str(fixed_frame)+'.mat'))
 	data1 = loadmat(os.path.join(path, 'bmode_f'+str(frame)+'.mat'))
 	fixed = data0['blurry']
 	moving = data1['blurry']

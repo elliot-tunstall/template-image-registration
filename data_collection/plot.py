@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Assuming 'results_df' is the DataFrame loaded with your data
-results_df = pd.read_csv('/Users/elliottunstall/Desktop/Imperial/FYP/Results/Cardiac/Complete/Alpha-0_Beta-1.csv')
+results_df = pd.read_csv('/Users/elliottunstall/Desktop/Imperial/FYP/Results/soft/10/Alpha-0_Beta-1.csv')
 
 # Creating a box plot for Mean Error across different algorithms
 plt.figure(figsize=(10, 6))

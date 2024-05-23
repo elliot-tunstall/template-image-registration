@@ -124,7 +124,7 @@ def field_evaluation(deform_forward, framenums, p, dataset, path, savename, save
             
             data.to_csv(savename + '_field.csv')
         
-        return 
+        return error
 
 def field_evaluation_simple(deform_forward, output_image):
     pts0 = loadmat('eval_pts/eval_pts_'+str(0)+'.mat')['pts']       #framenums[0]
