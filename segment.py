@@ -12,11 +12,11 @@ fixed, moving, pxm = load_inputs(50)
 plt.imshow(moving, extent=(pxm['X'][0][0].min(), pxm['X'][0][0].max(), pxm['Z'][0][0].max(), pxm['Z'][0][0].min()), origin='upper', cmap='gray')
 plt.show()
 
-seg_fixed = Segmentation(fixed)
-seg_moving = Segmentation(moving)
-seg_fixed.kmeans(mrf=0.15)
+seg_fixed = Segmentation(fixed, method='kmeans')
+seg_moving = Segmentation(moving, method='kmeans')
+# seg_fixed.kmeans(mrf=0.15)
 seg_fixed.apply_smoothing(method='morph_closing')
-seg_moving.kmeans(mrf=0.15)
+# seg_moving.kmeans(mrf=0.15)
 seg_moving.apply_smoothing(method='morph_closing')
 # print(seg_fixed.masks['tissue'])
 seg_fixed.masks['tissue'] = [seg_fixed.masks['tissue'][0]]
@@ -24,6 +24,7 @@ ignoreRegion = seg_fixed.masks['background'][0].mask
 seg_fixed.masks['background'] = [seg_fixed.masks['background'][1], seg_fixed.masks['background'][2]]
 seg_moving.masks['tissue'] = [seg_moving.masks['tissue'][0]]
 seg_moving.masks['background'] = [seg_moving.masks['background'][1], seg_moving.masks['background'][2]]
+
 # seg_fixed.masks['background'] = [seg_fixed.masks['background'][1], seg_fixed.masks['background'][2]]
 # seg_fixed.masks['tissue'][0].show(pixelMap = pxm)
 # seg_fixed.masks['background'][0].show(pixelMap = pxm, alpha=0.5)

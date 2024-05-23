@@ -97,7 +97,7 @@ class Mask():
 
         return mask
     
-    def smooth_mask(self, method='gaussian', kernel_size=5, iterations=1):
+    def smooth_mask(self, method='gaussian', kernel_size=5, sigma=3, shape="[]", iterations=1):
         """
         Smooth a binary mask.
         
@@ -115,7 +115,7 @@ class Mask():
         if method == 'gaussian':
             # Applying Gaussian Blur
             for _ in range(iterations):
-                smoothed = cv2.GaussianBlur(self.mask.astype(float), (kernel_size, kernel_size), 3)
+                smoothed = cv2.GaussianBlur(self.mask.astype(float), (kernel_size, kernel_size), sigma)
 
             # Apply a threshold to convert the smoothed mask back to a binary mask
             _, self.mask = cv2.threshold(smoothed, 0.3, 1, cv2.THRESH_BINARY)
@@ -139,8 +139,18 @@ class Mask():
 
         elif method == 'morph_closing':
             # Creating a kernel
-            kernel = np.ones((kernel_size, kernel_size), np.uint8)
-            
+            if shape == '+':
+
+                def create_plus_matrix(size):
+                    matrix = np.zeros((size, size))
+                    matrix[size // 2, :] = 1
+                    matrix[:, size // 2] = 1
+                    return matrix
+                
+                kernel = create_plus_matrix(kernel_size).astype(np.uint8)
+                
+            else:
+                kernel = np.ones((kernel_size, kernel_size), np.uint8)
         # Applying morphological operations
             # smoothed_mask = cv2.morphologyEx(mask.astype(np.uint8), cv2.MORPH_CLOSE, kernel, iterations=iterations)
 
@@ -153,8 +163,33 @@ class Mask():
                 eroded = cv2.erode(dilated.astype(np.uint8), kernel, iterations=1)
 
                 self.mask = eroded
+
+        elif method == 'binary_dilation':
+            # Creating a kernel
+            if shape == '+':
+
+                def create_plus_matrix(size):
+                    matrix = np.zeros((size, size))
+                    matrix[size // 2, :] = 1
+                    matrix[:, size // 2] = 1
+                    return matrix
+                
+                kernel = create_plus_matrix(kernel_size).astype(np.uint8)
+            else:
+                kernel = np.ones((kernel_size, kernel_size), np.uint8)
+            
+            # Applying morphological operations
+            for _ in range(iterations):
+                # Perform a dilation operation
+                dilated = cv2.dilate(self.mask.astype(np.uint8), kernel, iterations=1)
+                self.mask = dilated        
+
+        elif method == 'fill_holes':
+            # Fill holes in the mask
+            self.mask = binary_fill_holes(self.mask).astype(np.uint8)
+
         else:
-            raise ValueError("Unsupported smoothing method. Use 'gaussian' or 'morphological'.")
+            raise ValueError("Unsupported smoothing method. Use 'gaussian', 'morph_opening' or 'morph_closing'.")
         
         if np.all(self.mask == 0) or np.all(self.mask == False):
             return False
@@ -250,18 +285,21 @@ class Segmentation():
     def __init__(self, image: np.ndarray, method='otsu'):
         self.image = image
 
+        if method not in ['otsu', 'kmeans']:
+            raise ValueError("The 'method' parameter must be either 'otsu' or 'kmeans'.")
+
         if method == 'otsu':
             self.tissue, self.background = self.otsu_thresholding()
         elif method == 'kmeans':
             self.tissue, self.background = self.kmeans()
 
-        self.create_masks()
+        # self.create_masks()
 
     def create_masks(self):
         "Create masks for the segmented regions."
         self.regions = {}
-        self.regions['tissue'] = self.tissue
         self.regions['background'] = self.background
+        self.regions['tissue'] = self.tissue
         self.masks = {}
 
         for key, value in self.regions.items():
@@ -286,7 +324,7 @@ class Segmentation():
 
             self.masks[key] = binary_images
 
-    def kmeans(self, mrf=0.1):
+    def kmeans(self, mrf=0.15):
         "Kmeans segmentation using ANTsPy."
 
         import ants
@@ -324,7 +362,7 @@ class Segmentation():
 
         return self.tissue, self.background
 
-    def apply_smoothing(self, method='gaussian', region='all'):
+    def apply_smoothing(self, method='gaussian', kernel_size=5, sigma=3, shape="[]", region='all', iterations=1):
         """
         Apply a smoothing operation to all binary masks.
 
@@ -343,20 +381,72 @@ class Segmentation():
         if region == 'all':
             for key in self.masks:
                 for i in self.masks[key]:
-                    valid = i.smooth_mask(method=method)
+                    valid = i.smooth_mask(method=method, kernel_size=kernel_size, sigma=sigma, shape=shape, iterations=iterations)
                     
                     if valid == False:
                         self.masks[key].remove(i)  
         else:
             for i in self.masks[region]:
-                valid = i.smooth_mask(method=method)
+                valid = i.smooth_mask(method=method, kernel_size=kernel_size, sigma=sigma, shape=shape, iterations=iterations)
 
                 if valid == False:
                         self.masks[key].remove(i) 
 
         return self.masks
     
-    def show(self, pixelMap=None, overlay_image=True, axis=False, alpha=0.7):
+    def select_masks(self, region, size):
+        """
+        Select the largest masks in a region.
+
+        Parameters:
+            region (str): Region to select masks from.
+            size (int): Number of masks to select.
+            
+        Returns:
+            dict: Dictionary of selected masks.
+        """
+        if not isinstance(region, str):
+            raise TypeError("The 'region' parameter must be a string.")
+        elif region not in self.masks:
+            raise ValueError("The 'region' parameter is not valid.")
+        elif not isinstance(size, int):
+            raise TypeError("The 'size' parameter must be an integer.")
+        elif size < 1:
+            raise ValueError("The 'size' parameter must be greater than 0.")
+        
+        # Sort the masks in the region by area in descending order
+        for mask in self.masks[region]:
+            if mask.properties.area < size:
+                self.masks[region].remove(mask)
+        
+    def use_regions(self):
+        """
+        Use entire region as single mask object.
+        """
+        
+        self.masks['tissue'] = [Mask(self.tissue, props=None, region='tissue')]
+        self.masks['background'] = [Mask(self.background, props=None, region='background')]
+
+    def normalise_background(self, region='tissue'):
+        """
+        Normalise the background mask to the tissue mask.
+
+        Parameters:
+            region (str): Region to normalise. (optional) = 'tissue'.
+        """
+        masks = []
+
+        if region not in self.masks:
+            raise ValueError("The region does not exist.")
+        
+        for i in self.masks[region]:
+            masks.append(i.mask)
+        
+        combined_mask = np.maximum.reduce(masks)
+        inverse_mask = (1 != combined_mask)
+        self.masks['background'] = [Mask(inverse_mask, props=None, region='background')]
+    
+    def show(self, pixelMap=None, overlay_image=True, axis=False, alpha=0.7, region='all'):
         # I want to chnage this function to create a image of by appending transparent maks to the overlayed_image.
         # It should create a new attribute - mask.plot
         """
@@ -403,10 +493,19 @@ class Segmentation():
             else:
                 plt.imshow(overlayed_image, cmap='gray', extent=(pixelMap['X'][0][0].min(), pixelMap['X'][0][0].max(), pixelMap['Z'][0][0].max(), pixelMap['Z'][0][0].min()), origin='upper', alpha=1)
 
-        masks = []
-        mask_labels = []
-        for key in self.masks:
-            for i in self.masks[key]:
+        if region == 'all':
+            for key in self.masks:
+                for i in self.masks[key]:
+                    if np.shape(overlayed_image) != np.shape(i.mask):
+                        raise ValueError(f"The shape of the overlayed image must match the shape of the mask. Shapes {np.shape(overlayed_image)} - {np.shape(i.mask)}")
+                    
+                    i.show(pixelMap=pixelMap, alpha=alpha, multiplot=True)
+        
+        else:
+            if region not in self.masks:
+                raise ValueError(f"The region {region} does not exist.")
+            
+            for i in self.masks[region]:
                 if np.shape(overlayed_image) != np.shape(i.mask):
                     raise ValueError(f"The shape of the overlayed image must match the shape of the mask. Shapes {np.shape(overlayed_image)} - {np.shape(i.mask)}")
                 
