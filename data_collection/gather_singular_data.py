@@ -6,12 +6,10 @@ from registration_propagation import run
 # frames = list(range(2, 21)) + list(range(35, 61))
 # frames = range(2, 24)
 
-all_results_df = pd.DataFrame()
-
-for i in range(0,26):
-    alpha = 1-(i/25)
-    beta = i/25
-    print(f'Alpha: {alpha}, Beta: {beta}')
+alpha = 0
+beta = 1
+batches = ['diastole', 'systole']
+for i in [0, 1]:
 
     # Create an empty DataFrame with columns for metrics and settings
     columns = ['Frame', 'Dataset', 'Algorithm', 'Parameters', 'Time', 'DICE', 'HD', 'BCE', 'SSD', 'pSSD', 'MSE', 'pMSE', 'MI', 'pMI', 'SSIM', 'pSSIM', 'NCC', 'pNCC', 'JE', 'pJE', 'Mag Error', 'Mean Error', 'SD Error']
@@ -19,8 +17,8 @@ for i in range(0,26):
 
     algorithms = ['dipy', 'dipy_custom']
     parameters = f'Alpha-{alpha}_Beta-{beta}'
-    dataset = 'soft'
-    batch = '10'
+    dataset = 'cardiac'
+    batch = batches[i]
     fixed_frame = 1
     dataset_number = 10
 
@@ -124,14 +122,4 @@ for i in range(0,26):
     results_df.to_csv(csv_file_path, index=False)
 
     print(f"Results saved to {csv_file_path}")
-
-    # Concatenate the dataframes
-    all_results_df = pd.concat([all_results_df, results_df], ignore_index=True)
-
-# Save the concatenated DataFrame to a CSV file
-# Save the DataFrame to a CSV file
-csv_file_path = f'{path}/all_results.csv'
-all_results_df.to_csv(csv_file_path, index=False)
-
-print(f"Results saved to {csv_file_path}")
 

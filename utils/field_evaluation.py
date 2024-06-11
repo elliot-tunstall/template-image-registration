@@ -44,7 +44,7 @@ def field_evaluation(deform_forward, framenums, p, dataset, path, savename, save
 
         # -------------------------- Generate ground truths -------------------------- #
         # pts = subprocess.run(["matlab", "-batch", f"get_eval_pts(frame,'PLA',savedir+'new/','');"])
-        pts0 = loadmat('/Users/elliottunstall/Desktop/Imperial/FYP/Example_cardiac_dataset/eval_pts_'+str(0)+'.mat')['pts']       #framenums[0]
+        pts0 = loadmat('/Users/elliottunstall/Desktop/Imperial/FYP/Example_cardiac_dataset/eval_pts_'+str(framenums[0])+'.mat')['pts']       #framenums[0]
         pts = loadmat('/Users/elliottunstall/Desktop/Imperial/FYP/Example_cardiac_dataset/eval_pts_'+str(framenums[1])+'.mat')['pts']
         
         x = pxm['X']

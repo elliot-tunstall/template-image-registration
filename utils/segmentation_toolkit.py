@@ -84,6 +84,25 @@ class Mask():
                 plt.imshow(mask, alpha=alpha, cmap=self.cmap, clim=[0.9, 1], interpolation='none')
 
         return axis
+    
+    def show_axis(self, pixelMap=None, axis=False, alpha=1.0, multiplot=False):
+        "Show the mask"
+
+        mask = np.ma.masked_where(self.mask < 0.9, self.mask)
+        
+        if multiplot == False:
+            if pixelMap:
+                axis.imshow(mask, extent=(pixelMap['X'][0][0].min(), pixelMap['X'][0][0].max(), pixelMap['Z'][0][0].max(), pixelMap['Z'][0][0].min()), origin='upper', alpha=alpha, cmap=self.cmap, clim=[0.9, 1], interpolation='none')
+            else:
+                axis.imshow(mask, alpha=alpha, cmap=self.cmap, clim=[0.9, 1.1], interpolation='none')
+            
+            plt.show()
+        
+        else:
+            if pixelMap:
+                axis.imshow(mask, extent=(pixelMap['X'][0][0].min(), pixelMap['X'][0][0].max(), pixelMap['Z'][0][0].max(), pixelMap['Z'][0][0].min()), origin='upper', alpha=alpha, cmap=self.cmap, clim=[0.9, 1], interpolation='none')
+            else:
+                axis.imshow(mask, alpha=alpha, cmap=self.cmap, clim=[0.9, 1], interpolation='none')
 
     def transparency(self, alpha):
         # Ensure the image has three channels
@@ -466,7 +485,7 @@ class Segmentation():
         inverse_mask = (1 != combined_mask)
         self.masks['background'] = [Mask(inverse_mask, props=None, region='background')]
     
-    def show(self, pixelMap=None, overlay_image=True, axis=False, alpha=0.7, region='all'):
+    def show(self, pixelMap=None, overlay_image=True, axis=False, alpha=0.7, region='all', overlay_mask=False):
         # I want to chnage this function to create a image of by appending transparent maks to the overlayed_image.
         # It should create a new attribute - mask.plot
         """
@@ -513,6 +532,7 @@ class Segmentation():
             else:
                 plt.imshow(overlayed_image, cmap='gray', extent=(pixelMap['X'][0][0].min(), pixelMap['X'][0][0].max(), pixelMap['Z'][0][0].max(), pixelMap['Z'][0][0].min()), origin='upper', alpha=1)
 
+
         if region == 'all':
             for key in self.masks:
                 for i in self.masks[key]:
@@ -530,26 +550,84 @@ class Segmentation():
                     raise ValueError(f"The shape of the overlayed image must match the shape of the mask. Shapes {np.shape(overlayed_image)} - {np.shape(i.mask)}")
                 
                 i.show(pixelMap=pixelMap, alpha=alpha, multiplot=True)
-                    
-                # masks.append(i.mask)
-                # mask_labels.append(key)
-                # overlayed_image = cv2.addWeighted(overlayed_image, alpha, i.mask.astype(np.uint8), 1-alpha, 0)   
 
-        # fig = overlay_masks(overlay_image, masks, labels=mask_labels, mask_alpha=0.5)
+        if overlay_mask == True:
+            cmap = ListedColormap(['black', 'red'])
 
-        # if pixelMap is None:
-        #     plt.imshow(fig, cmap='gray')
-        # else:
-        #     plt.imshow(fig, cmap='gray', extent=(pixelMap['X'][0][0].min(), pixelMap['X'][0][0].max(), pixelMap['Z'][0][0].max(), pixelMap['Z'][0][0].min()), origin='upper')
+            overlay_mask = np.ma.masked_where(overlay_mask < 0.9, overlay_mask)
         
-        # for key in self.masks:
-        #     for idx, mask in enumerate(self.masks[key]):
-        #     #    i.change_transparency(alpha)
-        #         axis = mask.show(pixelMap=pixelMap, alpha=alpha, multiplot=multiplot)
-        #         print(f"Completed {key}: {idx+1} of {len(self.masks[key])} masks")   
+            if pixelMap:
+                plt.imshow(overlay_mask, extent=(pixelMap['X'][0][0].min(), pixelMap['X'][0][0].max(), pixelMap['Z'][0][0].max(), pixelMap['Z'][0][0].min()), origin='upper', alpha=alpha, cmap=cmap, clim=[0.9, 1], interpolation='none')
+            else:
+                plt.imshow(overlay_mask, alpha=alpha, cmap=cmap, clim=[0.9, 1.1], interpolation='none')
         
         if axis == False:     
             plt.show()
+
+    def plot_axis(self, pixelMap=None, overlay_image=False, axis=False, alpha=0.7, region='all', overlay_mask=None):
+        # I want to chnage this function to create a image of by appending transparent maks to the overlayed_image.
+        # It should create a new attribute - mask.plot
+        """
+        Show all the masks as a matplotlib plot.
+
+        Parameters:
+            pixelMap (dict): Pixel map for the image. (optional) = None.
+            overlay_on_image (np.ndarray): Image to overlay the masks onto. (optional) = False.
+            axis (plt axis): use for a matplotlib subplot functionality. (optional) = False.
+        """
+        # fig, axis = plt.subplots(1, 1, figsize=(6, 4))
+        multiplot = True
+
+        if not isinstance(overlay_image, bool):
+            raise TypeError("The 'overlayed_image' parameter must be of type bool")
+
+        if overlay_image == False:
+            overlayed_image = np.zeros_like(self.image)
+            print("Overlay image is False")
+
+        else:
+            overlayed_image = self.image
+        
+        if len(np.shape(overlayed_image)) != 2:
+            raise ValueError("The overlayed image must be a 2D array.")
+
+        if overlay_image == True: 
+            if pixelMap is None:
+                axis.imshow(overlayed_image, cmap='gray', alpha=1)
+            else:
+                axis.imshow(overlayed_image, cmap='gray', extent=(pixelMap['X'][0][0].min(), pixelMap['X'][0][0].max(), pixelMap['Z'][0][0].max(), pixelMap['Z'][0][0].min()), origin='upper', alpha=1)
+
+
+        if region == 'all':
+            for key in self.masks:
+                for i in self.masks[key]:
+                    if np.shape(overlayed_image) != np.shape(i.mask):
+                        raise ValueError(f"The shape of the overlayed image must match the shape of the mask. Shapes {np.shape(overlayed_image)} - {np.shape(i.mask)}")
+                    
+                    i.show_axis(pixelMap=pixelMap, alpha=alpha, multiplot=True, axis=axis)
+        
+        else:
+            if region not in self.masks:
+                raise ValueError(f"The region {region} does not exist.")
+            
+            for i in self.masks[region]:
+                if np.shape(overlayed_image) != np.shape(i.mask):
+                    raise ValueError(f"The shape of the overlayed image must match the shape of the mask. Shapes {np.shape(overlayed_image)} - {np.shape(i.mask)}")
+                
+                i.show_axis(pixelMap=pixelMap, alpha=alpha, multiplot=True, axis=axis)
+
+        if overlay_mask is not None:
+            cmap = ListedColormap(['black', 'darkorange'])
+
+            overlay_mask = np.ma.masked_where(overlay_mask < 0.9, overlay_mask)
+        
+            if pixelMap:
+                axis.imshow(overlay_mask, extent=(pixelMap['X'][0][0].min(), pixelMap['X'][0][0].max(), pixelMap['Z'][0][0].max(), pixelMap['Z'][0][0].min()), origin='upper', alpha=alpha, cmap=cmap, clim=[0.9, 1], interpolation='none')
+            else:
+                axis.imshow(overlay_mask, alpha=alpha, cmap=cmap, clim=[0.9, 1.1], interpolation='none')
+
+        return axis    
+        
 
     def show_select(self, mask_dict, pixelMap=None, overlay_on_image=False, alpha=0.5):
         """

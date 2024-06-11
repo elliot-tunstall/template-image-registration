@@ -1,16 +1,16 @@
 import pandas as pd
 import os
 import time
-from registration_propagation import run
+from run_full_segmentation import run
 
 # frames = list(range(2, 21)) + list(range(35, 61))
 # frames = range(2, 24)
 
 all_results_df = pd.DataFrame()
 
-for i in range(0,26):
-    alpha = 1-(i/25)
-    beta = i/25
+for i in range(0,1):
+    alpha = 0
+    beta = 1
     print(f'Alpha: {alpha}, Beta: {beta}')
 
     # Create an empty DataFrame with columns for metrics and settings
@@ -19,8 +19,8 @@ for i in range(0,26):
 
     algorithms = ['dipy', 'dipy_custom']
     parameters = f'Alpha-{alpha}_Beta-{beta}'
-    dataset = 'soft'
-    batch = '10'
+    dataset = 'cardiac'
+    batch = 'systole'
     fixed_frame = 1
     dataset_number = 10
 
@@ -49,7 +49,7 @@ for i in range(0,26):
             'Parameters': parameters,
             'Alpha': alpha,
             'Beta': beta,
-            'Time':     execution_time1,
+            'Execution Time':     execution_time1,
             'DICE':     dice,
             'HD':       hd,
             'BCE':      bce,
@@ -109,10 +109,10 @@ for i in range(0,26):
         print(f"{(f_indx+1)/len(frames)*100}% complete")
 
     if dataset == 'cardiac':
-        path = f'/Users/elliottunstall/Desktop/Imperial/FYP/Results/{dataset}/{batch}'
+        path = f'/Users/elliottunstall/Desktop/Imperial/FYP/Results/{dataset}/{batch}/true_segmentation'
 
     elif dataset == 'soft':
-        path = f'/Users/elliottunstall/Desktop/Imperial/FYP/Results/{dataset}/{dataset_number}'
+        path = f'/Users/elliottunstall/Desktop/Imperial/FYP/Results/{dataset}/{dataset_number}/true_segmentation'
 
     # Check if the directory exists
     if not os.path.exists(path):
