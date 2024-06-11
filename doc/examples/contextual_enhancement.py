@@ -79,20 +79,20 @@ are unknown, we use the approximation given in [Portegies2015b]_.
 """
 
 import numpy as np
-from dipy.core.gradients import gradient_table
-from dipy.data import get_fnames, default_sphere
+from dipy2.core.gradients import gradient_table
+from dipy2.data import get_fnames, default_sphere
 from dipy.denoise.enhancement_kernel import EnhancementKernel
 from dipy.denoise.shift_twist_convolution import convolve
-from dipy.io.image import load_nifti_data
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.segment.mask import median_otsu
-from dipy.sims.voxel import add_noise
-from dipy.reconst.csdeconv import odf_sh_to_sharp
-from dipy.reconst.shm import sf_to_sh, sh_to_sf
-from dipy.reconst.csdeconv import (
+from dipy2.io.image import load_nifti_data
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.segment.mask import median_otsu
+from dipy2.sims.voxel import add_noise
+from dipy2.reconst.csdeconv import odf_sh_to_sharp
+from dipy2.reconst.shm import sf_to_sh, sh_to_sf
+from dipy2.reconst.csdeconv import (
    auto_response_ssst, ConstrainedSphericalDeconvModel)
 
-from dipy.viz import window, actor
+from dipy2.viz import window, actor
 
 ###############################################################################
 # The enhancement is evaluated on the Stanford HARDI dataset

@@ -12,11 +12,11 @@ First import the necessary modules.
 
 import numpy as np
 
-from dipy.data import get_two_hcp842_bundles
-from dipy.data import fetch_bundle_atlas_hcp842
-from dipy.io.streamline import load_trk
-from dipy.stats.analysis import assignment_map
-from dipy.viz import actor, window
+from dipy2.data import get_two_hcp842_bundles
+from dipy2.data import fetch_bundle_atlas_hcp842
+from dipy2.io.streamline import load_trk
+from dipy2.stats.analysis import assignment_map
+from dipy2.viz import actor, window
 
 ###############################################################################
 # Download and read data for this tutorial

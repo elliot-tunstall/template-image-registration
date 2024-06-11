@@ -28,14 +28,14 @@ Let us load the necessary modules
 
 import numpy as np
 import matplotlib.pyplot as plt
-from dipy.core.gradients import gradient_table
-from dipy.data import get_fnames
-from dipy.denoise.noise_estimate import estimate_sigma
-from dipy.io.image import load_nifti, save_nifti
-from dipy.io.gradients import read_bvals_bvecs
+from dipy2.core.gradients import gradient_table
+from dipy2.data import get_fnames
+from dipy2.denoise.noise_estimate import estimate_sigma
+from dipy2.io.image import load_nifti, save_nifti
+from dipy2.io.gradients import read_bvals_bvecs
 from time import time
-from dipy.denoise.non_local_means import non_local_means
-from dipy.denoise.adaptive_soft_matching import adaptive_soft_matching
+from dipy2.denoise.non_local_means import non_local_means
+from dipy2.denoise.adaptive_soft_matching import adaptive_soft_matching
 
 ###############################################################################
 # Choose one of the data from the datasets in dipy_

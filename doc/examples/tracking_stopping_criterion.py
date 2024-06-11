@@ -28,23 +28,23 @@ deterministic direction getter.
 import matplotlib.pyplot as plt
 import numpy as np
 
-from dipy.core.gradients import gradient_table
-from dipy.data import get_fnames, default_sphere
-from dipy.direction import DeterministicMaximumDirectionGetter
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.io.image import load_nifti, load_nifti_data
-from dipy.io.streamline import save_trk
-from dipy.io.stateful_tractogram import Space, StatefulTractogram
-from dipy.reconst.csdeconv import (ConstrainedSphericalDeconvModel,
+from dipy2.core.gradients import gradient_table
+from dipy2.data import get_fnames, default_sphere
+from dipy2.direction import DeterministicMaximumDirectionGetter
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.io.image import load_nifti, load_nifti_data
+from dipy2.io.streamline import save_trk
+from dipy2.io.stateful_tractogram import Space, StatefulTractogram
+from dipy2.reconst.csdeconv import (ConstrainedSphericalDeconvModel,
                                    auto_response_ssst)
-from dipy.reconst.dti import fractional_anisotropy, TensorModel
-from dipy.tracking import utils
-from dipy.tracking.local_tracking import LocalTracking
-from dipy.tracking.streamline import Streamlines
+from dipy2.reconst.dti import fractional_anisotropy, TensorModel
+from dipy2.tracking import utils
+from dipy2.tracking.local_tracking import LocalTracking
+from dipy2.tracking.streamline import Streamlines
 from dipy.tracking.stopping_criterion import (ActStoppingCriterion,
                                               BinaryStoppingCriterion,
                                               ThresholdStoppingCriterion)
-from dipy.viz import window, actor, colormap, has_fury
+from dipy2.viz import window, actor, colormap, has_fury
 
 
 # Enables/disables interactive visualization

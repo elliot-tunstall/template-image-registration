@@ -21,16 +21,16 @@ with respect to the heart.
 from os.path import join as pjoin
 import numpy as np
 import matplotlib.pyplot as plt
-from dipy.viz import regtools
-from dipy.data import fetch_stanford_hardi
-from dipy.io.image import load_nifti
-from dipy.align.imaffine import (AffineMap,
+from dipy2.viz import regtools
+from dipy2.data import fetch_stanford_hardi
+from dipy2.io.image import load_nifti
+from dipy2.align.imaffine import (AffineMap,
                                  MutualInformationMetric,
                                  AffineRegistration)
 from dipy.align.transforms import (TranslationTransform3D,
                                    RigidTransform3D)
 
-from dipy.align import (affine_registration, translation,
+from dipy2.align import (affine_registration, translation,
                         rigid, register_series)
 
 

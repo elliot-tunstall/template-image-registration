@@ -12,11 +12,11 @@ First import the necessary modules:
 
 import numpy as np
 import matplotlib.pyplot as plt
-from dipy.core.gradients import gradient_table
-from dipy.data import get_fnames
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.io.image import load_nifti
-from dipy.reconst.dsi import DiffusionSpectrumModel
+from dipy2.core.gradients import gradient_table
+from dipy2.data import get_fnames
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.io.image import load_nifti
+from dipy2.reconst.dsi import DiffusionSpectrumModel
 
 ###############################################################################
 # Download and get the data filenames for this tutorial.

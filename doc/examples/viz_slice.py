@@ -10,9 +10,9 @@ Let's start by importing the relevant modules.
 
 import os
 
-from dipy.data import fetch_bundles_2_subjects
-from dipy.io.image import load_nifti, load_nifti_data
-from dipy.viz import window, actor, ui
+from dipy2.data import fetch_bundles_2_subjects
+from dipy2.io.image import load_nifti, load_nifti_data
+from dipy2.viz import window, actor, ui
 
 ###############################################################################
 # Let's download and load a T1.

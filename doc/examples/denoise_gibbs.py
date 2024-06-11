@@ -23,11 +23,11 @@ module of dipy:
 import matplotlib.pyplot as plt
 import numpy as np
 
-from dipy.denoise.gibbs import gibbs_removal
-from dipy.data import get_fnames, read_cenir_multib
-from dipy.io.image import load_nifti_data
-import dipy.reconst.msdki as msdki
-from dipy.segment.mask import median_otsu
+from dipy2.denoise.gibbs import gibbs_removal
+from dipy2.data import get_fnames, read_cenir_multib
+from dipy2.io.image import load_nifti_data
+import dipy2.reconst.msdki as msdki
+from dipy2.segment.mask import median_otsu
 
 ###############################################################################
 # We first apply this algorithm to a T1-weighted dataset which can be fetched

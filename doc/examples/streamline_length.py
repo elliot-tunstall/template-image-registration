@@ -16,10 +16,10 @@ number of streamlines in the set.
 
 import numpy as np
 from dipy.tracking.distances import approx_polygon_track
-from dipy.tracking.streamline import set_number_of_points
-from dipy.tracking.utils import length
+from dipy2.tracking.streamline import set_number_of_points
+from dipy2.tracking.utils import length
 import matplotlib.pyplot as plt
-from dipy.viz import window, actor
+from dipy2.viz import window, actor
 
 ###############################################################################
 # Let's first create a simple simulation of a bundle of streamlines using

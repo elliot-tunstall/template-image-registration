@@ -18,20 +18,20 @@ We start by loading sample data and identifying a fiber response function.
 from numpy.linalg import inv
 import matplotlib.pyplot as plt
 
-from dipy.core.gradients import gradient_table
-from dipy.data import get_fnames, small_sphere
-from dipy.direction import ProbabilisticDirectionGetter
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.io.image import load_nifti, load_nifti_data
-from dipy.io.stateful_tractogram import Space, StatefulTractogram
-from dipy.io.streamline import save_trk
-from dipy.reconst.csdeconv import auto_response_ssst
-from dipy.tracking import utils
-from dipy.tracking.local_tracking import LocalTracking
-from dipy.tracking.streamline import Streamlines, transform_streamlines
+from dipy2.core.gradients import gradient_table
+from dipy2.data import get_fnames, small_sphere
+from dipy2.direction import ProbabilisticDirectionGetter
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.io.image import load_nifti, load_nifti_data
+from dipy2.io.stateful_tractogram import Space, StatefulTractogram
+from dipy2.io.streamline import save_trk
+from dipy2.reconst.csdeconv import auto_response_ssst
+from dipy2.tracking import utils
+from dipy2.tracking.local_tracking import LocalTracking
+from dipy2.tracking.streamline import Streamlines, transform_streamlines
 from dipy.tracking.stopping_criterion import ThresholdStoppingCriterion
-from dipy.viz import window, actor, colormap
-from dipy.reconst.rumba import RumbaSDModel
+from dipy2.viz import window, actor, colormap
+from dipy2.reconst.rumba import RumbaSDModel
 
 
 # Enables/disables interactive visualization

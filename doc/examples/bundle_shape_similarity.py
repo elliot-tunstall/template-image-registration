@@ -18,10 +18,10 @@ First import the necessary modules.
 """
 
 import numpy as np
-from dipy.viz import window, actor
-from dipy.segment.bundles import bundle_shape_similarity
-from dipy.segment.bundles import select_random_set_of_streamlines
-from dipy.data import two_cingulum_bundles
+from dipy2.viz import window, actor
+from dipy2.segment.bundles import bundle_shape_similarity
+from dipy2.segment.bundles import select_random_set_of_streamlines
+from dipy2.data import two_cingulum_bundles
 
 ###############################################################################
 # To show the concept we will use two pre-saved cingulum bundle.

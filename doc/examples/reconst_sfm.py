@@ -11,14 +11,14 @@ reconstruct the fiber Orientation Distribution Function (fODF) in every voxel.
 First, we import the modules we will use in this example:
 """
 
-import dipy.reconst.sfm as sfm
-import dipy.data as dpd
-import dipy.direction.peaks as dpp
-from dipy.io.image import load_nifti
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.core.gradients import gradient_table
-from dipy.reconst.csdeconv import auto_response_ssst
-from dipy.viz import window, actor
+import dipy2.reconst.sfm as sfm
+import dipy2.data as dpd
+import dipy2.direction.peaks as dpp
+from dipy2.io.image import load_nifti
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.core.gradients import gradient_table
+from dipy2.reconst.csdeconv import auto_response_ssst
+from dipy2.viz import window, actor
 
 ###############################################################################
 # For the purpose of this example, we will use the Stanford HARDI dataset (150

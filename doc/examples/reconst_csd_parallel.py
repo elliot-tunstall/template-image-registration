@@ -15,14 +15,14 @@ function.
 import multiprocessing
 import time
 
-from dipy.core.gradients import gradient_table
-from dipy.data import get_fnames, default_sphere
-from dipy.direction import peaks_from_model
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.io.image import load_nifti
-from dipy.reconst.csdeconv import ConstrainedSphericalDeconvModel
-from dipy.reconst.csdeconv import auto_response_ssst
-from dipy.segment.mask import median_otsu
+from dipy2.core.gradients import gradient_table
+from dipy2.data import get_fnames, default_sphere
+from dipy2.direction import peaks_from_model
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.io.image import load_nifti
+from dipy2.reconst.csdeconv import ConstrainedSphericalDeconvModel
+from dipy2.reconst.csdeconv import auto_response_ssst
+from dipy2.segment.mask import median_otsu
 
 
 hardi_fname, hardi_bval_fname, hardi_bvec_fname = get_fnames('stanford_hardi')

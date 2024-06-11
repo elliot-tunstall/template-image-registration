@@ -20,18 +20,18 @@ on a tractography model of the local white matter anatomy, as described in
 Let's start by importing the necessary modules.
 """
 
-from dipy.core.gradients import gradient_table
-from dipy.data import get_fnames, default_sphere
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.io.image import load_nifti_data, load_nifti, save_nifti
-from dipy.reconst.shm import CsaOdfModel
-from dipy.direction import peaks_from_model
+from dipy2.core.gradients import gradient_table
+from dipy2.data import get_fnames, default_sphere
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.io.image import load_nifti_data, load_nifti, save_nifti
+from dipy2.reconst.shm import CsaOdfModel
+from dipy2.direction import peaks_from_model
 from dipy.tracking.stopping_criterion import ThresholdStoppingCriterion
-from dipy.tracking import utils
-from dipy.tracking.local_tracking import LocalTracking
-from dipy.tracking.streamline import Streamlines
-from dipy.viz import actor, window, colormap as cmap
-from dipy.tracking.utils import path_length
+from dipy2.tracking import utils
+from dipy2.tracking.local_tracking import LocalTracking
+from dipy2.tracking.streamline import Streamlines
+from dipy2.viz import actor, window, colormap as cmap
+from dipy2.tracking.utils import path_length
 import numpy as np
 import matplotlib as mpl
 from mpl_toolkits.axes_grid1 import AxesGrid

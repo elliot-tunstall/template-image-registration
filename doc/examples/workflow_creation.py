@@ -20,7 +20,7 @@ import shutil
 ###############################################################################
 # ``shutil`` Will be used for sample file manipulation.
 
-from dipy.workflows.workflow import Workflow
+from dipy2.workflows.workflow import Workflow
 
 ###############################################################################
 # ``Workflow`` is the base class that will be extended to create our workflow.

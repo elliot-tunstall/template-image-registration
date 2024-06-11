@@ -34,12 +34,12 @@ import numpy as np
 from scipy.ndimage import binary_dilation
 import matplotlib.pyplot as plt
 
-from dipy.core.gradients import gradient_table
-from dipy.data import get_fnames
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.io.image import load_nifti, save_nifti
-from dipy.segment.mask import median_otsu, segment_from_cfa, bounding_box
-from dipy.reconst.dti import TensorModel
+from dipy2.core.gradients import gradient_table
+from dipy2.data import get_fnames
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.io.image import load_nifti, save_nifti
+from dipy2.segment.mask import median_otsu, segment_from_cfa, bounding_box
+from dipy2.reconst.dti import TensorModel
 
 ###############################################################################
 # Then, we fetch and load a specific dataset with 64 gradient directions:

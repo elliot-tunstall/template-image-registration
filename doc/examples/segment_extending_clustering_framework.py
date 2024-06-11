@@ -62,14 +62,14 @@ Let's start by importing the necessary modules.
 
 import numpy as np
 
-from dipy.data import get_fnames
-from dipy.io.streamline import load_tractogram
-from dipy.tracking.streamline import Streamlines
-from dipy.viz import window, actor, colormap
-from dipy.segment.clustering import QuickBundles
+from dipy2.data import get_fnames
+from dipy2.io.streamline import load_tractogram
+from dipy2.tracking.streamline import Streamlines
+from dipy2.viz import window, actor, colormap
+from dipy2.segment.clustering import QuickBundles
 from dipy.segment.featurespeed import Feature, VectorOfEndpointsFeature
-from dipy.segment.metric import Metric, SumPointwiseEuclideanMetric
-from dipy.tracking.streamline import length
+from dipy2.segment.metric import Metric, SumPointwiseEuclideanMetric
+from dipy2.tracking.streamline import length
 
 ###############################################################################
 # We now define the class ``ArcLengthFeature`` that will perform the desired

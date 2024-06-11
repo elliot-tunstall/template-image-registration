@@ -14,14 +14,14 @@ registration of white matter tracts [Chandio23]_.
 """
 from os.path import join as pjoin
 
-from dipy.align.streamwarp import (bundlewarp, bundlewarp_vector_filed,
+from dipy2.align.streamwarp import (bundlewarp, bundlewarp_vector_filed,
                                    bundlewarp_shape_analysis)
-from dipy.data import fetch_bundle_warp_dataset
-from dipy.io.stateful_tractogram import Space, StatefulTractogram
-from dipy.io.streamline import save_tractogram, load_trk
-from dipy.tracking.streamline import (set_number_of_points, unlist_streamlines,
+from dipy2.data import fetch_bundle_warp_dataset
+from dipy2.io.stateful_tractogram import Space, StatefulTractogram
+from dipy2.io.streamline import save_tractogram, load_trk
+from dipy2.tracking.streamline import (set_number_of_points, unlist_streamlines,
                                       Streamlines)
-from dipy.viz.streamline import (viz_two_bundles, viz_vector_field,
+from dipy2.viz.streamline import (viz_two_bundles, viz_vector_field,
                                  viz_displacement_mag)
 from time import time
 

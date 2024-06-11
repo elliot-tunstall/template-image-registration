@@ -35,11 +35,11 @@ coefficients. First, we import all relevant modules:
 
 import matplotlib.pyplot as plt
 
-from dipy.reconst.ivim import IvimModel
-from dipy.core.gradients import gradient_table
-from dipy.data import get_fnames
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.io.image import load_nifti_data
+from dipy2.reconst.ivim import IvimModel
+from dipy2.core.gradients import gradient_table
+from dipy2.data import get_fnames
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.io.image import load_nifti_data
 
 ###############################################################################
 # We get an IVIM dataset using DIPY_'s data fetcher ``read_ivim``.

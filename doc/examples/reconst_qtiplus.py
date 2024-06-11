@@ -136,9 +136,9 @@ In DIPY, the constrained estimation routine is available as part of the
 First we import all the necessary modules to perform the QTI fit:
 """
 
-from dipy.data import read_DiB_217_lte_pte_ste, read_DiB_70_lte_pte_ste
-import dipy.reconst.qti as qti
-from dipy.viz.plotting import compare_qti_maps
+from dipy2.data import read_DiB_217_lte_pte_ste, read_DiB_70_lte_pte_ste
+import dipy2.reconst.qti as qti
+from dipy2.viz.plotting import compare_qti_maps
 
 ###############################################################################
 # To showcase why enforcing positivity constraints in QTI is relevant, we use

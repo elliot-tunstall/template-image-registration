@@ -41,13 +41,13 @@ Let's start by importing the relevant modules:
 """
 
 import numpy as np
-import dipy.reconst.fwdti as fwdti
-import dipy.reconst.dti as dti
+import dipy2.reconst.fwdti as fwdti
+import dipy2.reconst.dti as dti
 import matplotlib.pyplot as plt
-from dipy.data import fetch_hbn
+from dipy2.data import fetch_hbn
 import os.path as op
 import nibabel as nib
-from dipy.core.gradients import gradient_table
+from dipy2.core.gradients import gradient_table
 
 ###############################################################################
 # Without spatial constrains the free water elimination model cannot be solved

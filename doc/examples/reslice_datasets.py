@@ -15,9 +15,9 @@ Let's start by importing the necessary modules.
 
 import nibabel as nib
 
-from dipy.align.reslice import reslice
-from dipy.data import get_fnames
-from dipy.io.image import load_nifti, save_nifti
+from dipy2.align.reslice import reslice
+from dipy2.data import get_fnames
+from dipy2.io.image import load_nifti, save_nifti
 
 ###############################################################################
 # We use here a very small dataset to show the basic principles but you can

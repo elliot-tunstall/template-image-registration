@@ -12,12 +12,12 @@ First import the necessary modules:
 
 import numpy as np
 import matplotlib.pyplot as plt
-from dipy.reconst.forecast import ForecastModel
-from dipy.viz import actor, window
-from dipy.data import fetch_hbn, get_sphere
+from dipy2.reconst.forecast import ForecastModel
+from dipy2.viz import actor, window
+from dipy2.data import fetch_hbn, get_sphere
 import nibabel as nib
 import os.path as op
-from dipy.core.gradients import gradient_table
+from dipy2.core.gradients import gradient_table
 
 ###############################################################################
 # Download and read the data for this tutorial. Our implementation of FORECAST

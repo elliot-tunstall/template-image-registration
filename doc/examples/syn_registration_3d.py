@@ -12,13 +12,13 @@ We will register two 3D volumes from the same modality using SyN with the Cross
 
 import numpy as np
 
-from dipy.align.imaffine import AffineMap
-from dipy.align.imwarp import SymmetricDiffeomorphicRegistration
-from dipy.align.metrics import CCMetric
-from dipy.data import get_fnames
-from dipy.io.image import load_nifti
-from dipy.segment.mask import median_otsu
-from dipy.viz import regtools
+from dipy2.align.imaffine import AffineMap
+from dipy2.align.imwarp import SymmetricDiffeomorphicRegistration
+from dipy2.align.metrics import CCMetric
+from dipy2.data import get_fnames
+from dipy2.io.image import load_nifti
+from dipy2.segment.mask import median_otsu
+from dipy2.viz import regtools
 
 ###############################################################################
 # Let's fetch two b0 volumes, the first one will be the b0 from the Stanford

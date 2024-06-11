@@ -41,21 +41,21 @@ datasets in DIPY_.
 """
 import numpy as np
 
-from dipy.core.gradients import gradient_table
-from dipy.data import get_fnames, default_sphere
+from dipy2.core.gradients import gradient_table
+from dipy2.data import get_fnames, default_sphere
 from dipy.denoise.enhancement_kernel import EnhancementKernel
-from dipy.direction import peaks_from_model, ProbabilisticDirectionGetter
-from dipy.io.image import load_nifti_data, load_nifti
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.reconst.shm import CsaOdfModel
-from dipy.reconst.csdeconv import (
+from dipy2.direction import peaks_from_model, ProbabilisticDirectionGetter
+from dipy2.io.image import load_nifti_data, load_nifti
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.reconst.shm import CsaOdfModel
+from dipy2.reconst.csdeconv import (
   auto_response_ssst, ConstrainedSphericalDeconvModel)
-from dipy.tracking import utils
-from dipy.tracking.local_tracking import LocalTracking
+from dipy2.tracking import utils
+from dipy2.tracking.local_tracking import LocalTracking
 from dipy.tracking.stopping_criterion import ThresholdStoppingCriterion
-from dipy.tracking.streamline import Streamlines
+from dipy2.tracking.streamline import Streamlines
 from dipy.tracking.fbcmeasures import FBCMeasures
-from dipy.viz import window, actor
+from dipy2.viz import window, actor
 
 # Enables/disables interactive visualization
 interactive = False

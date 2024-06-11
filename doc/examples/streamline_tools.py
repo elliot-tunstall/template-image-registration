@@ -24,19 +24,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.ndimage import binary_dilation
 
-from dipy.core.gradients import gradient_table
-from dipy.data import get_fnames
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.io.image import load_nifti_data, load_nifti, save_nifti
-from dipy.io.stateful_tractogram import Space, StatefulTractogram
-from dipy.io.streamline import save_trk
-from dipy.direction import peaks
-from dipy.reconst import shm
-from dipy.tracking import utils
-from dipy.tracking.local_tracking import LocalTracking
+from dipy2.core.gradients import gradient_table
+from dipy2.data import get_fnames
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.io.image import load_nifti_data, load_nifti, save_nifti
+from dipy2.io.stateful_tractogram import Space, StatefulTractogram
+from dipy2.io.streamline import save_trk
+from dipy2.direction import peaks
+from dipy2.reconst import shm
+from dipy2.tracking import utils
+from dipy2.tracking.local_tracking import LocalTracking
 from dipy.tracking.stopping_criterion import BinaryStoppingCriterion
-from dipy.tracking.streamline import Streamlines
-from dipy.viz import window, actor, colormap as cmap
+from dipy2.tracking.streamline import Streamlines
+from dipy2.viz import window, actor, colormap as cmap
 
 ###############################################################################
 # We'll be using the Stanford HARDI dataset which consists of a single

@@ -11,22 +11,22 @@ signal as a combination of the signals from different fascicles (see also
 :ref:`sphx_glr_examples_built_reconstruction_reconst_sfm.py`).
 """
 
-from dipy.core.gradients import gradient_table
-from dipy.data import get_sphere, get_fnames
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.io.image import load_nifti, load_nifti_data
-from dipy.direction.peaks import peaks_from_model
-from dipy.io.streamline import save_trk
-from dipy.io.stateful_tractogram import Space, StatefulTractogram
-from dipy.reconst.csdeconv import auto_response_ssst
-from dipy.reconst import sfm
-from dipy.tracking import utils
-from dipy.tracking.local_tracking import LocalTracking
-from dipy.tracking.streamline import (select_random_set_of_streamlines,
+from dipy2.core.gradients import gradient_table
+from dipy2.data import get_sphere, get_fnames
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.io.image import load_nifti, load_nifti_data
+from dipy2.direction.peaks import peaks_from_model
+from dipy2.io.streamline import save_trk
+from dipy2.io.stateful_tractogram import Space, StatefulTractogram
+from dipy2.reconst.csdeconv import auto_response_ssst
+from dipy2.reconst import sfm
+from dipy2.tracking import utils
+from dipy2.tracking.local_tracking import LocalTracking
+from dipy2.tracking.streamline import (select_random_set_of_streamlines,
                                       transform_streamlines,
                                       Streamlines)
 from dipy.tracking.stopping_criterion import ThresholdStoppingCriterion
-from dipy.viz import window, actor, colormap, has_fury
+from dipy2.viz import window, actor, colormap, has_fury
 from numpy.linalg import inv
 
 # Enables/disables interactive visualization

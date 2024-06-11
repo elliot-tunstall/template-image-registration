@@ -18,10 +18,10 @@ from os.path import expanduser, join
 
 import matplotlib.pyplot as plt
 
-from dipy.core.gradients import gradient_table
-from dipy.data import fetch_sherbrooke_3shell
-from dipy.io import read_bvals_bvecs
-from dipy.io.image import load_nifti, save_nifti
+from dipy2.core.gradients import gradient_table
+from dipy2.data import fetch_sherbrooke_3shell
+from dipy2.io import read_bvals_bvecs
+from dipy2.io.image import load_nifti, save_nifti
 
 ###############################################################################
 # With the following commands we can download a dMRI dataset

@@ -11,12 +11,12 @@ Function (ODF).
 First import the necessary modules:
 """
 
-from dipy.reconst.shore import ShoreModel
-from dipy.viz import window, actor
-from dipy.core.gradients import gradient_table
-from dipy.data import get_fnames, get_sphere
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.io.image import load_nifti
+from dipy2.reconst.shore import ShoreModel
+from dipy2.viz import window, actor
+from dipy2.core.gradients import gradient_table
+from dipy2.data import get_fnames, get_sphere
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.io.image import load_nifti
 
 ###############################################################################
 # Download and read the data for this tutorial.

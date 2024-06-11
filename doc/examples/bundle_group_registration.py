@@ -33,9 +33,9 @@ Example
 We start by importing and creating the necessary functions:
 """
 
-from dipy.align.streamlinear import groupwise_slr
-from dipy.data import read_five_af_bundles
-from dipy.viz.streamline import show_bundles
+from dipy2.align.streamlinear import groupwise_slr
+from dipy2.data import read_five_af_bundles
+from dipy2.viz.streamline import show_bundles
 
 import logging
 logging.basicConfig(level=logging.INFO)

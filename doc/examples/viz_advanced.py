@@ -12,9 +12,9 @@ Let's start by importing the necessary modules.
 
 import numpy as np
 
-from dipy.data.fetcher import fetch_bundles_2_subjects, read_bundles_2_subjects
-from dipy.tracking.streamline import Streamlines
-from dipy.viz import actor, window, ui
+from dipy2.data.fetcher import fetch_bundles_2_subjects, read_bundles_2_subjects
+from dipy2.tracking.streamline import Streamlines
+from dipy2.viz import actor, window, ui
 
 ###############################################################################
 # In ``window`` we have all the objects that connect what needs to be rendered
@@ -73,7 +73,7 @@ world_coords = True
 # native space using the inverse of the affine.
 
 if not world_coords:
-    from dipy.tracking.streamline import transform_streamlines
+    from dipy2.tracking.streamline import transform_streamlines
     streamlines = transform_streamlines(streamlines, np.linalg.inv(affine))
 
 ###############################################################################

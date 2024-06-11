@@ -16,14 +16,14 @@ import os
 import numpy as np
 import scipy.ndimage as ndi
 
-from dipy.core.gradients import gradient_table
-from dipy.data import get_fnames, get_sphere
-from dipy.io.image import load_nifti, save_nifti
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.nn.histo_resdnn import HistoResDNN
-from dipy.reconst.shm import sh_to_sf_matrix
-from dipy.segment.mask import median_otsu
-from dipy.viz import window, actor
+from dipy2.core.gradients import gradient_table
+from dipy2.data import get_fnames, get_sphere
+from dipy2.io.image import load_nifti, save_nifti
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.nn.histo_resdnn import HistoResDNN
+from dipy2.reconst.shm import sh_to_sf_matrix
+from dipy2.segment.mask import median_otsu
+from dipy2.viz import window, actor
 
 
 # Disable oneDNN warning

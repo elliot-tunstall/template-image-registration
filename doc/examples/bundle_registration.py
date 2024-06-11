@@ -13,10 +13,10 @@ used here is called Streamline-based Linear Registration (SLR)
 """
 from time import sleep
 
-from dipy.align.streamlinear import StreamlineLinearRegistration
-from dipy.data import two_cingulum_bundles
-from dipy.tracking.streamline import set_number_of_points
-from dipy.viz import window, actor
+from dipy2.align.streamlinear import StreamlineLinearRegistration
+from dipy2.data import two_cingulum_bundles
+from dipy2.tracking.streamline import set_number_of_points
+from dipy2.viz import window, actor
 
 ###############################################################################
 # Let's download and load the two bundles.

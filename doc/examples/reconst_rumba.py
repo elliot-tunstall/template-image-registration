@@ -36,16 +36,16 @@ b-value of 2000.
 import numpy as np
 import matplotlib.pyplot as plt
 
-from dipy.core.gradients import gradient_table
-from dipy.data import get_fnames, get_sphere
-from dipy.direction import peaks_from_model, peak_directions
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.io.image import load_nifti
-from dipy.reconst.rumba import RumbaSDModel
-from dipy.reconst.csdeconv import auto_response_ssst, recursive_response
-from dipy.segment.mask import median_otsu
-from dipy.sims.voxel import single_tensor_odf
-from dipy.viz import window, actor
+from dipy2.core.gradients import gradient_table
+from dipy2.data import get_fnames, get_sphere
+from dipy2.direction import peaks_from_model, peak_directions
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.io.image import load_nifti
+from dipy2.reconst.rumba import RumbaSDModel
+from dipy2.reconst.csdeconv import auto_response_ssst, recursive_response
+from dipy2.segment.mask import median_otsu
+from dipy2.sims.voxel import single_tensor_odf
+from dipy2.viz import window, actor
 
 
 hardi_fname, hardi_bval_fname, hardi_bvec_fname = get_fnames('stanford_hardi')

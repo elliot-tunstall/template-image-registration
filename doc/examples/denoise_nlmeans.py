@@ -13,10 +13,10 @@ We start by loading the necessary modules
 import numpy as np
 import matplotlib.pyplot as plt
 from time import time
-from dipy.denoise.nlmeans import nlmeans
-from dipy.denoise.noise_estimate import estimate_sigma
-from dipy.data import get_fnames
-from dipy.io.image import load_nifti, save_nifti
+from dipy2.denoise.nlmeans import nlmeans
+from dipy2.denoise.noise_estimate import estimate_sigma
+from dipy2.data import get_fnames
+from dipy2.io.image import load_nifti, save_nifti
 
 ###############################################################################
 # Then, let's fetch and load a T1 data from Stanford University

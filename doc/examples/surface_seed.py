@@ -9,9 +9,9 @@ from cortical surfaces position [Stonge2018]_.
 
 import numpy as np
 
-from dipy.viz import window, actor
-from dipy.data import get_fnames
-from dipy.tracking.mesh import (random_coordinates_from_surface,
+from dipy2.viz import window, actor
+from dipy2.data import get_fnames
+from dipy2.tracking.mesh import (random_coordinates_from_surface,
                                 seeds_from_surface_coordinates)
 
 from fury.io import load_polydata

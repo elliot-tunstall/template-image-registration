@@ -18,9 +18,9 @@ and bias field corrected.
 
 import numpy as np
 import matplotlib.pyplot as plt
-from dipy.data import get_fnames
-from dipy.io.image import load_nifti_data
-from dipy.segment.tissue import TissueClassifierHMRF
+from dipy2.data import get_fnames
+from dipy2.io.image import load_nifti_data
+from dipy2.segment.tissue import TissueClassifierHMRF
 import time
 
 ###############################################################################

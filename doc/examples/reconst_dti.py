@@ -55,22 +55,22 @@ import numpy as np
 ``dipy.io.gradients`` is for loading / saving our bvals and bvecs
 """
 
-from dipy.io.image import load_nifti, save_nifti
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.core.gradients import gradient_table
+from dipy2.io.image import load_nifti, save_nifti
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.core.gradients import gradient_table
 
 """
 ``dipy.reconst`` is for the reconstruction algorithms which we use to create
 voxel models from the raw data.
 """
 
-import dipy.reconst.dti as dti
+import dipy2.reconst.dti as dti
 
 """
 ``dipy.data`` is used for small datasets that we use in tests and examples.
 """
 
-from dipy.data import get_fnames
+from dipy2.data import get_fnames
 
 """
 ``get_fnames`` will download the raw dMRI dataset of a single subject.
@@ -100,7 +100,7 @@ calculating Tensors on the background of the image. This is done using DIPY_'s
 ``mask`` module.
 """
 
-from dipy.segment.mask import median_otsu
+from dipy2.segment.mask import median_otsu
 
 maskdata, mask = median_otsu(data, vol_idx=range(10, 50), median_radius=3,
                              numpass=1, autocrop=True, dilate=2)
@@ -156,7 +156,7 @@ or where more than one population of white matter fibers crosses.
 """
 
 print('Computing anisotropy measures (FA, MD, RGB)')
-from dipy.reconst.dti import fractional_anisotropy, color_fa
+from dipy2.reconst.dti import fractional_anisotropy, color_fa
 
 FA = fractional_anisotropy(tenfit.evals)
 
@@ -221,10 +221,10 @@ area in an axial slice of the splenium of the corpus callosum (CC).
 
 print('Computing tensor ellipsoids in a part of the splenium of the CC')
 
-from dipy.data import get_sphere
+from dipy2.data import get_sphere
 sphere = get_sphere('repulsion724')
 
-from dipy.viz import window, actor
+from dipy2.viz import window, actor
 
 # Enables/disables interactive visualization
 interactive = False

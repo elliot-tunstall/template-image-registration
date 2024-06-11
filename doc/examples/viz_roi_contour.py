@@ -10,17 +10,17 @@ then display them with the seed ROI rendered in 3D with 50% transparency.
 Let's start by importing the relevant modules.
 """
 
-from dipy.core.gradients import gradient_table
-from dipy.reconst.shm import CsaOdfModel
-from dipy.data import default_sphere, get_fnames
-from dipy.direction import peaks_from_model
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.io.image import load_nifti, load_nifti_data
+from dipy2.core.gradients import gradient_table
+from dipy2.reconst.shm import CsaOdfModel
+from dipy2.data import default_sphere, get_fnames
+from dipy2.direction import peaks_from_model
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.io.image import load_nifti, load_nifti_data
 from dipy.tracking.stopping_criterion import ThresholdStoppingCriterion
-from dipy.tracking import utils
-from dipy.tracking.local_tracking import LocalTracking
-from dipy.tracking.streamline import Streamlines
-from dipy.viz import actor, window, colormap as cmap
+from dipy2.tracking import utils
+from dipy2.tracking.local_tracking import LocalTracking
+from dipy2.tracking.streamline import Streamlines
+from dipy2.viz import actor, window, colormap as cmap
 
 ###############################################################################
 # First, we need to generate some streamlines. For a more complete

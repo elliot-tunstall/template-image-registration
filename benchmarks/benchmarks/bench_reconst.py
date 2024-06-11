@@ -2,11 +2,11 @@
 
 import numpy as np
 
-from dipy.core.sphere import unique_edges
-from dipy.core.gradients import GradientTable
-from dipy.data import default_sphere, read_stanford_labels
-from dipy.io.image import load_nifti_data
-from dipy.reconst.csdeconv import ConstrainedSphericalDeconvModel
+from dipy2.core.sphere import unique_edges
+from dipy2.core.gradients import GradientTable
+from dipy2.data import default_sphere, read_stanford_labels
+from dipy2.io.image import load_nifti_data
+from dipy2.reconst.csdeconv import ConstrainedSphericalDeconvModel
 from dipy.reconst.recspeed import local_maxima
 from dipy.reconst.vec_val_sum import vec_val_vect
 

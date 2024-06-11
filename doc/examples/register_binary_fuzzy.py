@@ -11,9 +11,9 @@ This could be seen as aligning a fuzzy (sensed) image to a binary
 import numpy as np
 import matplotlib.pyplot as plt
 from skimage import draw, filters
-from dipy.align.imwarp import SymmetricDiffeomorphicRegistration
-from dipy.align.metrics import SSDMetric
-from dipy.viz import regtools
+from dipy2.align.imwarp import SymmetricDiffeomorphicRegistration
+from dipy2.align.metrics import SSDMetric
+from dipy2.viz import regtools
 
 ###############################################################################
 # Let's generate a sample template image as the combination of three ellipses.

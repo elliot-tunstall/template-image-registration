@@ -11,13 +11,13 @@ registration
 """
 
 import numpy as np
-from dipy.align.imwarp import SymmetricDiffeomorphicRegistration
-from dipy.align.metrics import SSDMetric, CCMetric
-import dipy.align.imwarp as imwarp
-from dipy.data import get_fnames
-from dipy.io.image import load_nifti_data
-from dipy.segment.mask import median_otsu
-from dipy.viz import regtools
+from dipy2.align.imwarp import SymmetricDiffeomorphicRegistration
+from dipy2.align.metrics import SSDMetric, CCMetric
+import dipy2.align.imwarp as imwarp
+from dipy2.data import get_fnames
+from dipy2.io.image import load_nifti_data
+from dipy2.segment.mask import median_otsu
+from dipy2.viz import regtools
 
 
 fname_moving = get_fnames('reg_o')

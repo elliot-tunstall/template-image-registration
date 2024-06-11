@@ -13,12 +13,12 @@ performs against standard DSI ODF and a ground truth multi tensor ODF.
 """
 
 import numpy as np
-from dipy.sims.voxel import multi_tensor, multi_tensor_odf
-from dipy.data import get_fnames, get_sphere
-from dipy.core.gradients import gradient_table
-from dipy.reconst.dsi import (DiffusionSpectrumDeconvModel,
+from dipy2.sims.voxel import multi_tensor, multi_tensor_odf
+from dipy2.data import get_fnames, get_sphere
+from dipy2.core.gradients import gradient_table
+from dipy2.reconst.dsi import (DiffusionSpectrumDeconvModel,
                               DiffusionSpectrumModel)
-from dipy.viz import window, actor
+from dipy2.viz import window, actor
 
 ###############################################################################
 # For the simulation we will use a standard DSI acquisition scheme with 514

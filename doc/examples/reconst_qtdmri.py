@@ -33,9 +33,9 @@ time-dependent q-space indices from a :math:`q\tau`-acquisition of a mouse.
 First import the necessary modules:
 """
 
-from dipy.data.fetcher import (fetch_qtdMRI_test_retest_2subjects,
+from dipy2.data.fetcher import (fetch_qtdMRI_test_retest_2subjects,
                                read_qtdMRI_test_retest_2subjects)
-from dipy.reconst import qtdmri, dti
+from dipy2.reconst import qtdmri, dti
 import matplotlib.pyplot as plt
 import numpy as np
 

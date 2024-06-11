@@ -25,13 +25,13 @@ regularization (MAPL) [Fick2016a]_.
 First import the necessary modules:
 """
 
-from dipy.reconst import mapmri
-from dipy.viz import window, actor
-from dipy.data import get_fnames, get_sphere
-from dipy.core.gradients import gradient_table
-from dipy.io.image import load_nifti
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.viz.plotting import compare_maps
+from dipy2.reconst import mapmri
+from dipy2.viz import window, actor
+from dipy2.data import get_fnames, get_sphere
+from dipy2.core.gradients import gradient_table
+from dipy2.io.image import load_nifti
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.viz.plotting import compare_maps
 
 ###############################################################################
 # Download and read the data for this tutorial.

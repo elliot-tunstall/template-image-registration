@@ -31,17 +31,17 @@ import matplotlib.pyplot as plt
 from time import time
 
 # load main pca function using Marcenko-Pastur distribution
-from dipy.denoise.localpca import mppca
+from dipy2.denoise.localpca import mppca
 
 # load functions to fetch data for this example
-from dipy.data import get_fnames
+from dipy2.data import get_fnames
 
 # load other dipy's functions that will be used for auxiliary analysis
-from dipy.core.gradients import gradient_table
-from dipy.io.image import load_nifti, save_nifti
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.segment.mask import median_otsu
-import dipy.reconst.dki as dki
+from dipy2.core.gradients import gradient_table
+from dipy2.io.image import load_nifti, save_nifti
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.segment.mask import median_otsu
+import dipy2.reconst.dki as dki
 
 ###############################################################################
 # For this example, we use fetch to download a multi-shell dataset which was

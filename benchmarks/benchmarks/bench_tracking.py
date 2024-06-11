@@ -3,13 +3,13 @@
 
 import numpy as np
 
-from dipy.data import get_fnames
-from dipy.io.streamline import load_tractogram
+from dipy2.data import get_fnames
+from dipy2.io.streamline import load_tractogram
 
-from dipy.tracking.streamline import set_number_of_points, length
+from dipy2.tracking.streamline import set_number_of_points, length
 from dipy.tracking.streamlinespeed import compress_streamlines
 
-from dipy.tracking import Streamlines
+from dipy2.tracking import Streamlines
 
 
 class BenchStreamlines:

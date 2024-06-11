@@ -16,7 +16,7 @@ from datetime import datetime
 
 # Doc generation depends on being able to import dipy
 try:
-    import dipy
+    import dipy2
 except ImportError:
     raise RuntimeError('Cannot import dipy, please investigate')
 
@@ -72,7 +72,7 @@ copyright = f"Copyright 2008-{datetime.now().year}, DIPY developers. Created usi
 # built documents.
 #
 # The short X.Y version.
-version = dipy.__version__
+version = dipy2.__version__
 # The full version, including alpha/beta/rc tags.
 release = version
 

@@ -18,14 +18,14 @@ Let's import the necessary modules.
 """
 import numpy as np
 
-from dipy.segment.clustering import QuickBundles
-from dipy.segment.metric import (
+from dipy2.segment.clustering import QuickBundles
+from dipy2.segment.metric import (
     AveragePointwiseEuclideanMetric, EuclideanMetric, CosineMetric)
 from dipy.segment.featurespeed import (
     IdentityFeature, ResampleFeature, CenterOfMassFeature, MidpointFeature,
     ArcLengthFeature, VectorOfEndpointsFeature)
-from dipy.tracking.streamline import set_number_of_points
-from dipy.viz import window, actor, colormap as cmap
+from dipy2.tracking.streamline import set_number_of_points
+from dipy2.viz import window, actor, colormap as cmap
 
 ###############################################################################
 # .. note::
@@ -36,9 +36,9 @@ from dipy.viz import window, actor, colormap as cmap
 
 
 def get_streamlines():
-    from dipy.data import get_fnames
-    from dipy.io.streamline import load_tractogram
-    from dipy.tracking.streamline import Streamlines
+    from dipy2.data import get_fnames
+    from dipy2.io.streamline import load_tractogram
+    from dipy2.tracking.streamline import Streamlines
 
     fname = get_fnames('fornix')
     fornix = load_tractogram(fname, 'same',

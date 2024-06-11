@@ -24,18 +24,18 @@ from os.path import join as pjoin
 
 import numpy as np
 
-from dipy.align import affine_registration, syn_registration
-from dipy.align.reslice import reslice
-from dipy.core.gradients import gradient_table
-from dipy.data import get_fnames, fetch_stanford_tracks
-from dipy.data.fetcher import (fetch_mni_template, read_mni_template)
-from dipy.io.gradients import read_bvals_bvecs
-from dipy.io.image import load_nifti
-from dipy.io.stateful_tractogram import Space, StatefulTractogram
-from dipy.io.streamline import save_tractogram, load_tractogram
-from dipy.segment.mask import median_otsu
-from dipy.tracking.streamline import transform_streamlines
-from dipy.viz import regtools, has_fury, horizon
+from dipy2.align import affine_registration, syn_registration
+from dipy2.align.reslice import reslice
+from dipy2.core.gradients import gradient_table
+from dipy2.data import get_fnames, fetch_stanford_tracks
+from dipy2.data.fetcher import (fetch_mni_template, read_mni_template)
+from dipy2.io.gradients import read_bvals_bvecs
+from dipy2.io.image import load_nifti
+from dipy2.io.stateful_tractogram import Space, StatefulTractogram
+from dipy2.io.streamline import save_tractogram, load_tractogram
+from dipy2.segment.mask import median_otsu
+from dipy2.tracking.streamline import transform_streamlines
+from dipy2.viz import regtools, has_fury, horizon
 
 ###############################################################################
 # In order to get the deformation field, we will first use two b0 volumes. Both

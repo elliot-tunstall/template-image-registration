@@ -39,13 +39,13 @@ We start by importing a few of the libraries we will use.
 import numpy as np
 import matplotlib.pyplot as plt
 
-from dipy.core.gradients import gradient_table
-import dipy.data as dpd
-import dipy.denoise.noise_estimate as ne
-from dipy.io.image import load_nifti
-from dipy.io.gradients import read_bvals_bvecs
-import dipy.reconst.dti as dti
-from dipy.viz import window, actor
+from dipy2.core.gradients import gradient_table
+import dipy2.data as dpd
+import dipy2.denoise.noise_estimate as ne
+from dipy2.io.image import load_nifti
+from dipy2.io.gradients import read_bvals_bvecs
+import dipy2.reconst.dti as dti
+from dipy2.viz import window, actor
 
 # Enables/disables interactive visualization
 interactive = False

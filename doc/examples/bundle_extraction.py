@@ -11,17 +11,17 @@ First import the necessary modules.
 
 import numpy as np
 
-from dipy.align.streamlinear import whole_brain_slr
-from dipy.data import get_two_hcp842_bundles
-from dipy.data import (fetch_target_tractogram_hcp,
+from dipy2.align.streamlinear import whole_brain_slr
+from dipy2.data import get_two_hcp842_bundles
+from dipy2.data import (fetch_target_tractogram_hcp,
                        fetch_bundle_atlas_hcp842,
                        get_bundle_atlas_hcp842,
                        get_target_tractogram_hcp)
-from dipy.io.stateful_tractogram import Space, StatefulTractogram
-from dipy.io.streamline import load_trk, save_trk
-from dipy.io.utils import create_tractogram_header
-from dipy.segment.bundles import RecoBundles
-from dipy.viz import actor, window
+from dipy2.io.stateful_tractogram import Space, StatefulTractogram
+from dipy2.io.streamline import load_trk, save_trk
+from dipy2.io.utils import create_tractogram_header
+from dipy2.segment.bundles import RecoBundles
+from dipy2.viz import actor, window
 
 ###############################################################################
 # Download and read data for this tutorial
