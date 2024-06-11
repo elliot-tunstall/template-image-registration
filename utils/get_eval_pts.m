@@ -1,3 +1,5 @@
+## Author: Clara Rodrigo Gonzalez
+
 function pts = get_eval_pts(frame, view, savedir, outdir)
 
     savedir = '/media/clararg/8TB HDD/Data/STRAUS/Clara/new/';

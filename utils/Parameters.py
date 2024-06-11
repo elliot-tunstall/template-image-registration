@@ -1,3 +1,5 @@
+## Author: Clara Rodrigo Gonzalez
+
 import numpy as np
 import pandas as pd
 import numpy.random as random

@@ -1,3 +1,5 @@
+## Author: Clara Rodrigo Gonzalez
+
 import scipy
 from scipy.io import loadmat
 import numpy as np

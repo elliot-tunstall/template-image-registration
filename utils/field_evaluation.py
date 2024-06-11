@@ -1,3 +1,6 @@
+
+## Author: Clara Rodrigo Gonzalez
+
 import numpy as np
 import subprocess
 import mat73

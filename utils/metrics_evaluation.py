@@ -1,3 +1,6 @@
+
+
+## Author: Clara Rodrigo Gonzalez 
 # This is me trying to figure out bayesian optimization
 import numpy as np
 import pandas as pd

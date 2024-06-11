@@ -273,18 +273,10 @@ for row in range(2):
             subset['Scaled Value'] = subset['Value']
 
         # Create the box plot
-        sns.boxplot(x='Algorithm', y='Scaled Value', data=subset, ax=ax, 
-                    palette=palette, whis=[0, 100], dodge=False)  # Set whis=[0, 100] to include all data points within the whiskers
-        
-        # Calculate the mean values and plot it
-        mean_values = subset.groupby('Algorithm')['Scaled Value'].mean().reset_index()
-
-        # Add the lineplot for mean values, ensuring it is contained within each subplot
-        sns.lineplot(x='Algorithm', y='Scaled Value', data=mean_values, color='black', 
-                    linestyle='--', ax=ax, markers=True, ci=None)
-        
-        # for patch in boxplot.patches:
-        #     patch.set_alpha(0.7)  # Set the transparency level here
+        boxplot = sns.boxplot(x='Algorithm', y='Scaled Value', data=subset, ax=ax, 
+                            palette=palette, whis=[0, 100], dodge=False)  # Set whis=[0, 100] to include all data points within the whiskers
+        for patch in boxplot.patches:
+            patch.set_alpha(0.7)  # Set the transparency level here
 
         sns.stripplot(x='Algorithm', y='Scaled Value', data=subset, ax=ax, 
                     palette=palette, size=3, jitter=True, edgecolor='gray', alpha=0.7, dodge=False, legend=False)

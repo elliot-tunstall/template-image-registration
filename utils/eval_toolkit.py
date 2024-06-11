@@ -1,3 +1,4 @@
+## Author: Clara Rodrigo Gonzalez
 
 import numpy as np
 from scipy.io import savemat, loadmat

@@ -1,3 +1,5 @@
+## Author: Clara Rodrigo Gonzalez
+
 import matplotlib.pyplot as plt
 
 def show_image(img, pixelMap):
